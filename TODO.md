@@ -123,10 +123,10 @@ Completed 2026-11-04. Message values and result APIs are unchanged; the document
 - [x] Prepare CI-gated Packagist registration/update with credentials in repository secrets.
 - [x] Use the `latest` development branch for Composer `dev-latest`, without a hard-coded version.
 - [x] Add package metadata, distribution exclusions, and publishing instructions.
-- [ ] Push the initial GitHub repository and verify remote CI.
+- [x] Push the initial GitHub repository and verify remote CI.
 - [ ] Configure Packagist credentials and complete initial registration.
 
-Prepared 2026-11-04. Publishing is gated on all checks and never runs from pull requests. Missing secrets produce an explicit notice; registration uses a main token, and regular updates can use a safe token.
+Pushed 2026-11-04 to `thuraaung2493/laravel-rulecraft` on `latest`. The first remote CI run passed every configured job; Packagist was explicitly skipped pending secrets. Publishing is gated on all checks and never runs from pull requests. Missing secrets produce an explicit notice; registration uses a main token, and regular updates can use a safe token.
 
 ## Completion checklist for each feature
 

@@ -42,7 +42,7 @@ php composer.phar lint
 php composer.phar test
 ```
 
-For PHP 7.3, select Testbench `^5.0` for Laravel 7 or `^6.0` for Laravel 8. `check-platform-reqs` checks the real PHP runtime and extensions, including when Composer platform settings exist; see the [Composer command reference](https://getcomposer.org/doc/03-cli.md#check-platform-reqs). These local results do not represent a GitHub Actions run; remote CI remains unverified.
+For PHP 7.3, select Testbench `^5.0` for Laravel 7 or `^6.0` for Laravel 8. `check-platform-reqs` checks the real PHP runtime and extensions, including when Composer platform settings exist; see the [Composer command reference](https://getcomposer.org/doc/03-cli.md#check-platform-reqs). The first [GitHub Actions run](https://github.com/thuraaung2493/laravel-rulecraft/actions/runs/41760728605) passed on 2026-11-04 for all eight configured runtime combinations, plus PHPStan level 8, Pint, formatting, and Builder browser checks. The table above records the separate local compatibility runs.
 
 ## Builder browser checks
 

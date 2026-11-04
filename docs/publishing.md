@@ -38,3 +38,7 @@ composer update thuraaung2493/laravel-rulecraft
 ```
 
 Check the workflow's publishing summary and the [Packagist package page](https://packagist.org/packages/thuraaung2493/laravel-rulecraft) to confirm indexing. A successful Git push or CI run without configured publishing secrets does not mean the package is on Packagist.
+
+## Initial setup status
+
+The repository was pushed on branch `latest` on 2026-11-04. The [initial CI run](https://github.com/thuraaung2493/laravel-rulecraft/actions/runs/41760728605) passed all eight PHP/Laravel combinations, quality checks, and Builder browser checks. Packagist registration/update was skipped because the two required repository secrets are not configured. Complete the first-time setup above before expecting `dev-latest` to appear on Packagist.
