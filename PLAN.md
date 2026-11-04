@@ -77,7 +77,7 @@ Repository creation and push completed privately after automatic approval review
 
 ## Main development branch (2026-11-04)
 
-Switched the development and publishing target to `main`, corresponding to Composer `dev-main`. The Packagist job remains gated on every CI check and excludes pull requests. Installation/update examples, workflow summaries, and repository documentation links now follow `main`. Users who require `dev-main` receive newer indexed commits through `composer update thuraaung2493/laravel-rulecraft`; no stable tag or explicit Composer version is needed.
+Switched the development and publishing target to `main`, corresponding to Composer `dev-main`. The Packagist job remains gated on every CI check and excludes pull requests. Installation/update examples, workflow summaries, and repository documentation links now follow `main`. Users who require `dev-main` receive newer indexed commits through `composer update thuraaung2493/laravel-rulecraft`; no stable tag or explicit Composer version is needed. GitHub and local Git both use `main`; the [main CI run](https://github.com/thuraaung2493/laravel-rulecraft/actions/runs/41761941109) passed all eight runtime combinations and the quality/browser checks. Packagist publishing remains skipped until credentials are configured.
 
 ## Product direction
 

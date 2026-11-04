@@ -132,9 +132,9 @@ Pushed 2026-11-04 to `thuraaung2493/laravel-rulecraft` on `main`. The first remo
 
 - [x] Target `main` in the Packagist workflow and report Composer version `dev-main`.
 - [x] Update install/update commands and repository documentation links.
-- [ ] Switch the GitHub default branch, push changes, and verify CI on main.
+- [x] Switch the GitHub default branch, push changes, and verify CI on main.
 
-Prepared 2026-11-04. Consumers require `dev-main`; after a successful publish they can fetch newer commits with `composer update thuraaung2493/laravel-rulecraft`.
+Completed 2026-11-04. The [main CI run](https://github.com/thuraaung2493/laravel-rulecraft/actions/runs/41761941109) passed all configured checks. Consumers require `dev-main`; after a successful publish they can fetch newer commits with `composer update thuraaung2493/laravel-rulecraft`.
 
 ## Completion checklist for each feature
 
