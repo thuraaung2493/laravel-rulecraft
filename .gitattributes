@@ -4,9 +4,6 @@
 /.gitignore export-ignore
 /.prettierrc.json export-ignore
 /AGENTS.md export-ignore
-/BUILDER_PLAN.md export-ignore
-/PLAN.md export-ignore
-/TODO.md export-ignore
 /package.json export-ignore
 /package-lock.json export-ignore
 /phpstan.neon.dist export-ignore

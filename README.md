@@ -20,7 +20,7 @@ It uses Symfony Expression Language and configurable table names. The source tar
 - Embeddable Blade rule builder with visual/code modes, draft previews, and custom/Bootstrap presets.
 - Independent configuration of every package table name.
 
-The builder is optional and disabled by default. See [builder examples](docs/examples/builder.md) for complete setup and CSS customization, or [TODO.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/main/TODO.md) for implementation status.
+The builder is optional and disabled by default. See [builder examples](docs/examples/builder.md) for complete setup and CSS customization.
 
 ## Getting started
 
@@ -395,5 +395,3 @@ Details: [component usage, editing, CSS overrides, and view publishing](docs/exa
 | Complete business scenarios, handlers, and operational examples | [Use cases and examples](docs/examples.md) |
 | Tests, tooling, and runtime verification | [Development](docs/development.md) |
 | Development versions and Packagist publishing | [Publishing](docs/publishing.md) |
-
-Implementation status is in [PLAN.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/main/PLAN.md); planned features are in [TODO.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/main/TODO.md).

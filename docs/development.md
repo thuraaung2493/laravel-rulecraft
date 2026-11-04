@@ -15,7 +15,7 @@ To select a Laravel major, constrain the matching Testbench major during update,
 
 The separate PHP 8.3 quality job installs Larastan 3 and Pint 1, then runs `vendor/bin/phpstan analyse` and `vendor/bin/pint --test`. These modern tools are not required on the PHP 7.3 development baseline. The checked-in static analysis configuration uses level 8; syntax checks and the compatibility tests additionally run on their target PHP versions. PHP source, configuration, migrations, routes, tests, and tooling declare `strict_types=1`; Pint enforces the declaration. Existing native types and PHPDoc remain compatible with PHP 7.3. Strict PHP calls do not cast expression context values or replace optional context validation.
 
-See [PLAN.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/main/PLAN.md) for exact local runtime verification and pending compatibility work.
+The compatibility table below records the local runtime verification.
 
 ## Minimum-runtime verification
 

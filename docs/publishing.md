@@ -8,7 +8,7 @@ The repository is `thuraaung2493/laravel-rulecraft`. The default development bra
 
 The Tests workflow runs on pushes, pull requests, and manual dispatch. It checks all configured PHP/Laravel combinations, Composer metadata/runtime requirements, syntax, PHPStan level 8, Pint, Builder formatting, and browser behavior. Packagist runs only after all three check jobs succeed, and only for the `main` branch outside pull requests. Older runs for the same ref are canceled when a new run starts.
 
-Packagist receives the repository URL and indexes the Git source; this workflow uploads no package archive. GitHub distribution archives exclude tests, development tools, CI files, and planning documents through `.gitattributes`. Runtime code, configuration, migrations, views, bundled assets, documentation, and the license remain included.
+Packagist receives the repository URL and indexes the Git source; this workflow uploads no package archive. GitHub distribution archives exclude tests, development tools, and CI files through `.gitattributes`. Runtime code, configuration, migrations, views, bundled assets, documentation, and the license remain included.
 
 ## First-time setup
 

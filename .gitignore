@@ -12,3 +12,8 @@
 !/.env.example
 /auth.json
 /*.log
+
+# Internal planning documents stay outside this repository.
+/PLAN.md
+/TODO.md
+/BUILDER_PLAN.md
