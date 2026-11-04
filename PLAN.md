@@ -75,6 +75,10 @@ Initialized Git on branch `latest`, providing Composer version `dev-latest`, and
 
 Repository creation and push completed privately after automatic approval review required explicit approval for public source disclosure. Public visibility was approved by the user and enabled on 2026-11-04. No stable tag or hard-coded Composer version was added.
 
+## Main development branch (2026-11-04)
+
+Switched the development and publishing target to `main`, corresponding to Composer `dev-main`. The Packagist job remains gated on every CI check and excludes pull requests. Installation/update examples, workflow summaries, and repository documentation links now follow `main`. Users who require `dev-main` receive newer indexed commits through `composer update thuraaung2493/laravel-rulecraft`; no stable tag or explicit Composer version is needed.
+
 ## Product direction
 
 - Product name: **Rulecraft**.

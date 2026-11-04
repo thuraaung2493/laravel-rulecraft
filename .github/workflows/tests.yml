@@ -128,7 +128,7 @@ jobs:
   packagist:
     name: Publish to Packagist
     needs: [test, quality, builder-browser]
-    if: github.ref == 'refs/heads/latest' && github.event_name != 'pull_request'
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     runs-on: ubuntu-latest
     permissions: {}
     env:
@@ -187,4 +187,4 @@ jobs:
           message = "Package registered on Packagist." if register else "Packagist update accepted."
           print(message)
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
-              summary.write(message + " Version: dev-latest.\n")
+              summary.write(message + " Version: dev-main.\n")

@@ -15,7 +15,7 @@
     "support": {
         "issues": "https://github.com/thuraaung2493/laravel-rulecraft/issues",
         "source": "https://github.com/thuraaung2493/laravel-rulecraft",
-        "docs": "https://github.com/thuraaung2493/laravel-rulecraft/blob/latest/README.md"
+        "docs": "https://github.com/thuraaung2493/laravel-rulecraft/blob/main/README.md"
     },
     "require": {
         "illuminate/console": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",

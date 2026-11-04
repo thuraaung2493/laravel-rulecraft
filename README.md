@@ -2,7 +2,7 @@
 
 Rulecraft is a Laravel developer tool for business rules and conditional role permissions. Store conditions in the database, combine them with AND/OR groups, and evaluate application data. Execute registered actions explicitly when a policy passes.
 
-It uses Symfony Expression Language and configurable table names. The source targets PHP 7.3 compatibility and Laravel 7–13 on compatible runtimes. The development version is `dev-latest`, tracked by the `latest` branch.
+It uses Symfony Expression Language and configurable table names. The source targets PHP 7.3 compatibility and Laravel 7–13 on compatible runtimes. The development version is `dev-main`, tracked by the `main` branch.
 
 ## Features
 
@@ -20,7 +20,7 @@ It uses Symfony Expression Language and configurable table names. The source tar
 - Embeddable Blade rule builder with visual/code modes, draft previews, and custom/Bootstrap presets.
 - Independent configuration of every package table name.
 
-The builder is optional and disabled by default. See [builder examples](docs/examples/builder.md) for complete setup and CSS customization, or [TODO.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/latest/TODO.md) for implementation status.
+The builder is optional and disabled by default. See [builder examples](docs/examples/builder.md) for complete setup and CSS customization, or [TODO.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/main/TODO.md) for implementation status.
 
 ## Getting started
 
@@ -45,7 +45,7 @@ The sections below introduce the core workflow in one place. Create policy recor
 Once the package is registered on Packagist, install the development version:
 
 ```bash
-composer require thuraaung2493/laravel-rulecraft:dev-latest
+composer require thuraaung2493/laravel-rulecraft:dev-main
 php artisan vendor:publish --tag=rulecraft-config
 ```
 
@@ -63,7 +63,7 @@ For a local checkout before Packagist registration, add a path repository to you
 Require the local development version and publish configuration:
 
 ```bash
-composer require thuraaung2493/laravel-rulecraft:dev-latest
+composer require thuraaung2493/laravel-rulecraft:dev-main
 php artisan vendor:publish --tag=rulecraft-config
 ```
 
@@ -396,4 +396,4 @@ Details: [component usage, editing, CSS overrides, and view publishing](docs/exa
 | Tests, tooling, and runtime verification | [Development](docs/development.md) |
 | Development versions and Packagist publishing | [Publishing](docs/publishing.md) |
 
-Implementation status is in [PLAN.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/latest/PLAN.md); planned features are in [TODO.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/latest/TODO.md).
+Implementation status is in [PLAN.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/main/PLAN.md); planned features are in [TODO.md](https://github.com/thuraaung2493/laravel-rulecraft/blob/main/TODO.md).

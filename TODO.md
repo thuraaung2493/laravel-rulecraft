@@ -121,12 +121,20 @@ Completed 2026-11-04. Message values and result APIs are unchanged; the document
 ## 11. GitHub and Packagist delivery
 
 - [x] Prepare CI-gated Packagist registration/update with credentials in repository secrets.
-- [x] Use the `latest` development branch for Composer `dev-latest`, without a hard-coded version.
+- [x] Use the `main` development branch for Composer `dev-main`, without a hard-coded version.
 - [x] Add package metadata, distribution exclusions, and publishing instructions.
 - [x] Push the initial GitHub repository and verify remote CI.
 - [ ] Configure Packagist credentials and complete initial registration.
 
-Pushed 2026-11-04 to `thuraaung2493/laravel-rulecraft` on `latest`. The first remote CI run passed every configured job; Packagist was explicitly skipped pending secrets. Publishing is gated on all checks and never runs from pull requests. Missing secrets produce an explicit notice; registration uses a main token, and regular updates can use a safe token.
+Pushed 2026-11-04 to `thuraaung2493/laravel-rulecraft` on `main`. The first remote CI run passed every configured job; Packagist was explicitly skipped pending secrets. Publishing is gated on all checks and never runs from pull requests. Missing secrets produce an explicit notice; registration uses a main token, and regular updates can use a safe token.
+
+## 12. Publish development updates from main
+
+- [x] Target `main` in the Packagist workflow and report Composer version `dev-main`.
+- [x] Update install/update commands and repository documentation links.
+- [ ] Switch the GitHub default branch, push changes, and verify CI on main.
+
+Prepared 2026-11-04. Consumers require `dev-main`; after a successful publish they can fetch newer commits with `composer update thuraaung2493/laravel-rulecraft`.
 
 ## Completion checklist for each feature
 
