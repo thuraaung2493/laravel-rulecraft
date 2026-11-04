@@ -73,7 +73,7 @@ PHPStan level 8, Pint, Composer validation, and syntax checks pass. All 227 test
 
 Initialized Git on branch `latest`, providing Composer version `dev-latest`, and pushed the package to [thuraaung2493/laravel-rulecraft](https://github.com/thuraaung2493/laravel-rulecraft). Added Composer metadata, archive exclusions, and a CI-gated Packagist job with optional initial registration. Bearer authentication uses repository secrets; pull requests cannot publish. The publishing guide documents main-token registration and safe-token updates. The first [GitHub Actions run](https://github.com/thuraaung2493/laravel-rulecraft/actions/runs/41760728605) passed all eight PHP/Laravel combinations, PHPStan level 8, Pint, formatting, and Builder browser checks. Packagist is not registered yet; credentials remain to be configured.
 
-Repository creation and push completed privately after automatic approval review required explicit approval for public source disclosure. Public visibility is pending the user's approval. No stable tag or hard-coded Composer version was added.
+Repository creation and push completed privately after automatic approval review required explicit approval for public source disclosure. Public visibility was approved by the user and enabled on 2026-11-04. No stable tag or hard-coded Composer version was added.
 
 ## Product direction
 
