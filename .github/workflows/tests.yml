@@ -1,0 +1,190 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      register_package:
+        description: Register this repository on Packagist for the first time (main API token required)
+        type: boolean
+        default: false
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - php: '7.3'
+            laravel: '7'
+            testbench: '^5.0'
+            legacy: true
+          - php: '7.3'
+            laravel: '8'
+            testbench: '^6.0'
+            legacy: true
+          - php: '8.0'
+            laravel: '9'
+            testbench: '^7.0'
+            legacy: true
+          - php: '8.1'
+            laravel: '10'
+            testbench: '^8.0'
+            legacy: true
+          - php: '8.2'
+            laravel: '11'
+            testbench: '^9.0'
+            legacy: true
+          - php: '8.2'
+            laravel: '12'
+            testbench: '^10.0'
+            legacy: false
+          - php: '8.3'
+            laravel: '13'
+            testbench: '^11.0'
+            legacy: false
+          - php: '8.5'
+            laravel: '13'
+            testbench: '^11.0'
+            legacy: false
+    name: PHP ${{ matrix.php }} / Laravel ${{ matrix.laravel }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: mbstring, pdo_sqlite, dom, xml, xmlwriter
+          coverage: none
+          tools: composer:v2
+      - run: composer validate --strict
+      - name: Install current dependencies
+        if: ${{ !matrix.legacy }}
+        run: composer update --with "orchestra/testbench:${{ matrix.testbench }}" --prefer-dist --no-interaction --no-progress
+      - name: Install historical dependencies for compatibility tests only
+        if: ${{ matrix.legacy }}
+        # Historical Laravel releases have advisories. This exception is scoped to
+        # the isolated test job; no package/global security policy is disabled.
+        run: composer update --with "orchestra/testbench:${{ matrix.testbench }}" --no-security-blocking --prefer-dist --no-interaction --no-progress
+      - run: composer check-platform-reqs
+      - run: composer lint
+      - run: composer test
+
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo_sqlite, dom, xml, xmlwriter
+          coverage: none
+          tools: composer:v2
+      - run: composer update --with 'orchestra/testbench:^11.0' --prefer-dist --no-interaction --no-progress
+      - name: Install quality tools on a modern runtime
+        run: composer require --dev 'larastan/larastan:^3.0' 'laravel/pint:^1.0' --with-all-dependencies --no-interaction --no-progress
+      - run: vendor/bin/phpstan analyse --no-progress
+      - run: vendor/bin/pint --test
+
+  builder-browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: mbstring, pdo_sqlite, dom, xml, xmlwriter
+          coverage: none
+          tools: composer:v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: composer update --with 'orchestra/testbench:^11.0' --prefer-dist --no-interaction --no-progress
+      - run: npm ci
+      - run: npm run format:check
+      - run: npx playwright install --with-deps chromium
+      - name: Start isolated browser fixture
+        run: |
+          php -S 127.0.0.1:8927 tests/browser/router.php > /tmp/rulecraft-builder-server.log 2>&1 &
+          for builder_attempt in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8927/ > /dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/rulecraft-builder-server.log
+          exit 1
+      - run: npm run test:browser
+        env:
+          RULECRAFT_BROWSER_CHANNEL: chromium
+
+  packagist:
+    name: Publish to Packagist
+    needs: [test, quality, builder-browser]
+    if: github.ref == 'refs/heads/latest' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    permissions: {}
+    env:
+      PACKAGIST_USERNAME: ${{ secrets.PACKAGIST_USERNAME }}
+      PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
+      REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
+      REGISTER_PACKAGE: ${{ inputs.register_package || false }}
+    steps:
+      - name: Check Packagist configuration
+        id: configuration
+        shell: bash
+        run: |
+          if [ -n "$PACKAGIST_USERNAME" ] && [ -n "$PACKAGIST_TOKEN" ]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Packagist publishing needs PACKAGIST_USERNAME and PACKAGIST_TOKEN repository secrets. See docs/publishing.md."
+            echo "Packagist was not updated: configure the two repository secrets, then run this workflow again." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - name: Register or update the package
+        if: steps.configuration.outputs.ready == 'true'
+        shell: python
+        run: |
+          import json
+          import os
+          import sys
+          import urllib.error
+          import urllib.request
+
+          register = os.environ["REGISTER_PACKAGE"].lower() == "true"
+          endpoint = "create-package" if register else "update-package"
+          credentials = os.environ["PACKAGIST_USERNAME"] + ":" + os.environ["PACKAGIST_TOKEN"]
+          request = urllib.request.Request(
+              "https://packagist.org/api/" + endpoint,
+              data=json.dumps({"repository": os.environ["REPOSITORY_URL"]}).encode(),
+              headers={
+                  "Authorization": "Bearer " + credentials,
+                  "Content-Type": "application/json",
+                  "User-Agent": "Rulecraft-CI (" + os.environ["REPOSITORY_URL"] + ")",
+              },
+              method="POST",
+          )
+          try:
+              with urllib.request.urlopen(request, timeout=60) as response:
+                  result = json.load(response)
+          except urllib.error.HTTPError as error:
+              print("::error::Packagist returned HTTP " + str(error.code)
+                    + ". Verify package registration and the configured token.")
+              sys.exit(1)
+          except (urllib.error.URLError, ValueError):
+              print("::error::The Packagist request failed. Retry the workflow.")
+              sys.exit(1)
+          if result.get("status") != "success":
+              print("::error::Packagist did not accept the request.")
+              sys.exit(1)
+          message = "Package registered on Packagist." if register else "Packagist update accepted."
+          print(message)
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write(message + " Version: dev-latest.\n")

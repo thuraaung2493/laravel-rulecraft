@@ -1,0 +1,67 @@
+{
+    "name": "thuraaung2493/laravel-rulecraft",
+    "description": "Expressive business rules and conditional role permissions for Laravel.",
+    "keywords": [
+        "laravel",
+        "rules",
+        "rule-engine",
+        "expression-language",
+        "permissions",
+        "blade"
+    ],
+    "homepage": "https://github.com/thuraaung2493/laravel-rulecraft",
+    "type": "library",
+    "license": "MIT",
+    "support": {
+        "issues": "https://github.com/thuraaung2493/laravel-rulecraft/issues",
+        "source": "https://github.com/thuraaung2493/laravel-rulecraft",
+        "docs": "https://github.com/thuraaung2493/laravel-rulecraft/blob/latest/README.md"
+    },
+    "require": {
+        "illuminate/console": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/contracts": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/database": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/routing": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/support": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/validation": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "illuminate/view": "^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0 || ^12.0 || ^13.0",
+        "php": "^7.3 || ^8.0",
+        "symfony/expression-language": "^5.4 || ^6.4 || ^7.0 || ^8.1"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.0 || ^10.0 || ^11.0",
+        "phpunit/phpunit": "^9.6 || ^10.5 || ^11.5 || ^12.0 || ^13.0",
+        "spatie/laravel-permission": "^5.8 || ^6.0 || ^7.0 || ^8.0"
+    },
+    "suggest": {
+        "spatie/laravel-permission": "Required for the default conditional-permission integration; install a version compatible with your application."
+    },
+    "autoload": {
+        "psr-4": {
+            "Thuraaung\\Rulecraft\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Thuraaung\\Rulecraft\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Thuraaung\\Rulecraft\\RulecraftServiceProvider"
+            ],
+            "aliases": {
+                "Rulecraft": "Thuraaung\\Rulecraft\\Facades\\Rulecraft"
+            }
+        }
+    },
+    "scripts": {
+        "test": "@php vendor/bin/phpunit",
+        "lint": "@php tools/lint.php"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": false
+    }
+}

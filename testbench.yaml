@@ -1,0 +1,3 @@
+providers:
+  - Thuraaung\Rulecraft\RulecraftServiceProvider
+  - Spatie\Permission\PermissionServiceProvider

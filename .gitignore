@@ -1,0 +1,14 @@
+/vendor/
+/composer.lock
+/.phpunit.cache/
+/.phpunit.result.cache
+/.phpunit-warnings.log
+/.DS_Store
+
+/node_modules/
+
+/.env
+/.env.*
+!/.env.example
+/auth.json
+/*.log

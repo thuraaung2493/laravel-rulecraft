@@ -1,0 +1,17 @@
+/.github export-ignore
+/.editorconfig export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/.prettierrc.json export-ignore
+/AGENTS.md export-ignore
+/BUILDER_PLAN.md export-ignore
+/PLAN.md export-ignore
+/TODO.md export-ignore
+/package.json export-ignore
+/package-lock.json export-ignore
+/phpstan.neon.dist export-ignore
+/phpunit.xml.dist export-ignore
+/pint.json export-ignore
+/testbench.yaml export-ignore
+/tests export-ignore
+/tools export-ignore

@@ -1,0 +1,539 @@
+.rulecraft-builder {
+    --rc-primary: #18181b;
+    --rc-danger: #b91c1c;
+    --rc-danger-background: #fef2f2;
+    --rc-on-primary: #fff;
+    --rc-surface: #fff;
+    --rc-background: #fafafa;
+    --rc-text: #18181b;
+    --rc-muted: #71717a;
+    --rc-border: #e4e4e7;
+    --rc-radius: 8px;
+    --rc-spacing: 16px;
+    --rc-font-family:
+        ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    box-sizing: border-box;
+    color: var(--rc-text);
+    font: 14px/1.5 var(--rc-font-family);
+    background: var(--rc-background);
+    border: 1px solid var(--rc-border);
+    border-radius: var(--rc-radius);
+    overflow-wrap: anywhere;
+    isolation: isolate;
+}
+.rulecraft-builder *,
+.rulecraft-builder *::before,
+.rulecraft-builder *::after {
+    box-sizing: border-box;
+}
+.rulecraft-builder [hidden] {
+    display: none !important;
+}
+.rulecraft-builder h2,
+.rulecraft-builder h3,
+.rulecraft-builder p {
+    margin: 0;
+}
+.rulecraft-builder .rc-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--rc-spacing);
+    padding: 24px;
+    border-bottom: 1px solid var(--rc-border);
+    background: var(--rc-surface);
+    border-radius: var(--rc-radius) var(--rc-radius) 0 0;
+}
+.rulecraft-builder .rc-eyebrow {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--rc-muted);
+}
+.rulecraft-builder .rc-title {
+    font-size: 22px;
+    line-height: 1.4;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+}
+.rulecraft-builder .rc-state {
+    color: var(--rc-muted);
+    font-size: 12px;
+}
+.rulecraft-builder .rc-toolbar,
+.rulecraft-builder .rc-group-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+.rulecraft-builder .rc-workspace {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 300px;
+    align-items: start;
+}
+.rulecraft-builder .rc-editor {
+    min-width: 0;
+    padding: 24px;
+}
+.rulecraft-builder .rc-preview {
+    min-width: 0;
+    padding: 24px;
+    border-left: 1px solid var(--rc-border);
+    align-self: stretch;
+    background: var(--rc-surface);
+}
+.rulecraft-builder .rc-preview h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.rulecraft-builder .rc-preview > .rc-field {
+    margin-top: 20px;
+}
+.rulecraft-builder .rc-preview > .rc-help {
+    margin-top: 16px;
+}
+.rulecraft-builder .rc-group {
+    min-width: 0;
+    margin: 0;
+    padding: var(--rc-spacing);
+    border: 1px solid var(--rc-border);
+    border-radius: var(--rc-radius);
+    background: var(--rc-surface);
+}
+.rulecraft-builder .rc-group .rc-group {
+    margin-top: var(--rc-spacing);
+    border-left: 3px solid var(--rc-primary);
+}
+.rulecraft-builder .rc-legend {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+.rulecraft-builder .rc-node-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: var(--rc-spacing);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--rc-border);
+}
+.rulecraft-builder .rc-node-heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    min-width: 0;
+}
+.rulecraft-builder .rc-node-title {
+    color: var(--rc-text);
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+.rulecraft-builder .rc-group > .rc-node-header .rc-node-title {
+    font-size: 16px;
+}
+.rulecraft-builder .rc-rule {
+    min-width: 0;
+    margin: var(--rc-spacing) 0 0;
+    padding: var(--rc-spacing);
+    border: 1px solid var(--rc-border);
+    border-radius: var(--rc-radius);
+    background: var(--rc-background);
+}
+.rulecraft-builder .rc-row,
+.rulecraft-builder .rc-group-top {
+    display: flex;
+    align-items: end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.rulecraft-builder .rc-group-top > .rc-field:first-child {
+    flex: 1 1 140px;
+}
+.rulecraft-builder .rc-field {
+    min-width: 0;
+    margin-bottom: 12px;
+}
+.rulecraft-builder .rc-row > .rc-field {
+    flex: 1 1 140px;
+}
+.rulecraft-builder .rc-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    margin: 0;
+    color: var(--rc-muted);
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+}
+.rulecraft-builder .rc-toggle .rc-checkbox {
+    flex: 0 0 18px;
+    margin: 0;
+    cursor: pointer;
+}
+.rulecraft-builder .rc-label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.rulecraft-builder .rc-input {
+    display: block;
+    width: 100%;
+    min-height: 36px;
+    margin: 0;
+    padding: 7px 10px;
+    color: var(--rc-text);
+    background-color: var(--rc-surface);
+    border: 1px solid var(--rc-border);
+    border-radius: calc(var(--rc-radius) - 2px);
+    font: inherit;
+    line-height: 1.4;
+}
+.rulecraft-builder select.rc-input {
+    padding-right: 40px;
+    text-overflow: ellipsis;
+}
+.rulecraft-builder textarea.rc-input {
+    resize: vertical;
+}
+.rulecraft-builder .rc-checkbox {
+    width: 18px;
+    height: 18px;
+    margin: 8px 0;
+    accent-color: var(--rc-primary);
+}
+.rulecraft-builder .rc-help {
+    display: block;
+    color: var(--rc-muted);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-top: 5px;
+}
+.rulecraft-builder .rc-code,
+.rulecraft-builder code {
+    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+    font-size: 12px;
+    tab-size: 2;
+}
+.rulecraft-builder .rc-button {
+    --bs-btn-color: var(--rc-text);
+    --bs-btn-hover-color: var(--rc-text);
+    --bs-btn-active-color: var(--rc-text);
+    --bs-btn-disabled-color: var(--rc-text);
+    --bs-btn-bg: var(--rc-surface);
+    --bs-btn-hover-bg: var(--rc-background);
+    --bs-btn-active-bg: var(--rc-background);
+    --bs-btn-disabled-bg: var(--rc-surface);
+    --bs-btn-border-color: var(--rc-border);
+    --bs-btn-hover-border-color: var(--rc-muted);
+    --bs-btn-active-border-color: var(--rc-muted);
+    --bs-btn-disabled-border-color: var(--rc-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 12px;
+    border: 1px solid var(--rc-border);
+    border-radius: calc(var(--rc-radius) - 2px);
+    background: var(--rc-surface);
+    color: var(--rc-text);
+    font: inherit;
+    font-size: 12px;
+    font-weight: 550;
+    line-height: 1.5;
+    cursor: pointer;
+    box-shadow: 0 1px 2px #00000006;
+    text-decoration: none;
+}
+.rulecraft-builder .rc-button:hover {
+    background: var(--rc-background);
+    border-color: var(--rc-muted);
+}
+.rulecraft-builder .rc-button-primary {
+    --bs-btn-color: var(--rc-on-primary);
+    --bs-btn-hover-color: var(--rc-on-primary);
+    --bs-btn-active-color: var(--rc-on-primary);
+    --bs-btn-disabled-color: var(--rc-on-primary);
+    --bs-btn-disabled-bg: var(--rc-primary);
+    --bs-btn-disabled-border-color: var(--rc-primary);
+    --bs-btn-bg: var(--rc-primary);
+    --bs-btn-hover-bg: var(--rc-primary);
+    --bs-btn-active-bg: var(--rc-primary);
+    --bs-btn-border-color: var(--rc-primary);
+    --bs-btn-hover-border-color: var(--rc-primary);
+    --bs-btn-active-border-color: var(--rc-primary);
+    color: var(--rc-on-primary);
+    background: var(--rc-primary);
+    border-color: var(--rc-primary);
+}
+.rulecraft-builder .rc-button-primary:hover {
+    color: var(--rc-on-primary);
+    background: var(--rc-primary);
+    filter: brightness(0.95);
+}
+.rulecraft-builder .rc-icon-button {
+    width: 44px;
+    min-height: 44px;
+    padding: 10px;
+    flex: 0 0 44px;
+    box-shadow: none;
+}
+.rulecraft-builder .rc-icon-button svg {
+    width: 20px;
+    height: 20px;
+    pointer-events: none;
+}
+.rulecraft-builder .rc-button-danger {
+    --bs-btn-color: var(--rc-danger);
+    --bs-btn-hover-color: var(--rc-danger);
+    --bs-btn-active-color: var(--rc-danger);
+    --bs-btn-disabled-color: var(--rc-danger);
+    --bs-btn-bg: transparent;
+    --bs-btn-hover-bg: var(--rc-danger-background);
+    --bs-btn-active-bg: var(--rc-danger-background);
+    --bs-btn-disabled-bg: transparent;
+    --bs-btn-border-color: transparent;
+    --bs-btn-hover-border-color: var(--rc-danger-background);
+    --bs-btn-active-border-color: var(--rc-danger-background);
+    --bs-btn-disabled-border-color: transparent;
+    color: var(--rc-danger);
+    background: transparent;
+    border-color: transparent;
+}
+.rulecraft-builder .rc-button-danger:hover {
+    color: var(--rc-danger);
+    background: var(--rc-danger-background);
+    border-color: var(--rc-danger-background);
+}
+.rulecraft-builder .rc-button:disabled {
+    opacity: 0.5;
+    cursor: wait;
+}
+.rulecraft-builder :is(.rc-input, .rc-button, .rc-checkbox, summary):focus-visible {
+    outline: 2px solid var(--rc-primary);
+    outline-offset: 3px;
+}
+.rulecraft-builder .rc-empty {
+    padding: 20px 0;
+    color: var(--rc-muted);
+    font-size: 12px;
+}
+.rulecraft-builder .rc-group-actions {
+    margin-top: 12px;
+}
+.rulecraft-builder .rc-visual {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+}
+.rulecraft-builder .rc-expression {
+    grid-column: 1 / -1;
+    padding: 8px 10px;
+    margin: 0 0 12px;
+    border-left: 2px solid var(--rc-border);
+}
+.rulecraft-builder .rc-expression code {
+    white-space: pre-wrap;
+    color: var(--rc-muted);
+}
+.rulecraft-builder .rc-disclosure {
+    margin-top: 16px;
+    border-top: 1px solid var(--rc-border);
+    padding-top: 10px;
+}
+.rulecraft-builder .rc-disclosure summary {
+    width: fit-content;
+    cursor: pointer;
+    color: var(--rc-muted);
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.rulecraft-builder .rc-message {
+    margin: 16px 24px 0;
+    padding: 12px;
+    border: 1px solid var(--rc-border);
+    border-radius: var(--rc-radius);
+    font-size: 13px;
+}
+.rulecraft-builder .rc-message-success {
+    color: #166534;
+    background: #f0fdf4;
+    border-color: #bbf7d0;
+}
+.rulecraft-builder .rc-message-error,
+.rulecraft-builder .rc-error {
+    color: #b91c1c;
+}
+.rulecraft-builder .rc-message-error {
+    background: #fef2f2;
+    border-color: #fecaca;
+}
+.rulecraft-builder .rc-results {
+    list-style: none;
+    padding: 0;
+    margin: 16px 0 0;
+    font-size: 12px;
+}
+.rulecraft-builder .rc-results .rc-results {
+    border-left: 1px solid var(--rc-border);
+    margin: 8px 0 8px 5px;
+    padding-left: 10px;
+}
+.rulecraft-builder .rc-results li {
+    padding: 4px 0;
+}
+.rulecraft-builder .rc-badge {
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+.rulecraft-builder .rc-status-pass {
+    background: #dcfce7;
+    color: #166534;
+}
+.rulecraft-builder .rc-status-fail,
+.rulecraft-builder .rc-status-error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+.rulecraft-builder .rc-status-disabled {
+    background: #e4e4e7;
+    color: #52525b;
+}
+.rulecraft-builder:where(.rc-theme-bootstrap) {
+    --rc-primary: #0d6efd;
+    --rc-radius: 6px;
+    --rc-border: #dee2e6;
+    --rc-background: #f8f9fa;
+    --rc-text: #212529;
+    --rc-muted: #6c757d;
+}
+@media (max-width: 1000px) {
+    .rulecraft-builder .rc-workspace {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .rulecraft-builder .rc-preview {
+        border-left: 0;
+        border-top: 1px solid var(--rc-border);
+    }
+}
+@media (max-width: 540px) {
+    .rulecraft-builder .rc-header {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 16px;
+    }
+    .rulecraft-builder .rc-editor,
+    .rulecraft-builder .rc-preview {
+        padding: 12px;
+    }
+    .rulecraft-builder .rc-group,
+    .rulecraft-builder .rc-rule {
+        padding: 10px;
+    }
+}
+
+.rulecraft-builder .rc-checkbox:checked {
+    background-color: var(--rc-primary);
+    border-color: var(--rc-primary);
+}
+
+.rulecraft-builder .rc-condition-label {
+    margin-bottom: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+.rulecraft-builder .rc-operand-controls {
+    display: grid;
+    grid-template-columns: 124px minmax(0, 1fr);
+    gap: 10px;
+    align-items: start;
+}
+.rulecraft-builder .rc-operand-controls > .rc-field,
+.rulecraft-builder .rc-visual > .rc-field {
+    margin-bottom: 0;
+}
+.rulecraft-builder .rc-operand-controls > .rc-field > .rc-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.rulecraft-builder .rc-section-title {
+    margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 600;
+}
+.rulecraft-builder .rc-rule-details {
+    margin-bottom: 20px;
+}
+.rulecraft-builder .rc-rule-top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 96px 140px;
+    gap: 12px;
+    align-items: end;
+}
+.rulecraft-builder .rc-rule-top > .rc-field {
+    margin-bottom: 0;
+}
+.rulecraft-builder .rc-operand-controls.rc-with-type {
+    grid-template-columns: 124px minmax(0, 1fr) 110px;
+}
+.rulecraft-builder .rc-type-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    padding: 7px 10px;
+    border: 1px solid var(--rc-border);
+    border-radius: calc(var(--rc-radius) - 2px);
+    color: var(--rc-muted);
+    background: var(--rc-background);
+    font-size: 12px;
+}
+.rulecraft-builder .rc-visual > .rc-expression-preview {
+    margin-top: 0;
+}
+@media (max-width: 540px) {
+    .rulecraft-builder .rc-rule-top {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .rulecraft-builder .rc-rule-top > .rc-field:first-child {
+        grid-column: 1 / -1;
+    }
+    .rulecraft-builder .rc-operand-controls.rc-with-type {
+        grid-template-columns: minmax(0, 1fr) 110px;
+    }
+    .rulecraft-builder .rc-operand-controls.rc-with-type > :first-child {
+        grid-column: 1 / -1;
+    }
+}
+
+.rulecraft-builder .rc-function-signature {
+    grid-column: 1 / -1;
+    color: var(--rc-muted);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}

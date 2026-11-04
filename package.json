@@ -1,0 +1,16 @@
+{
+  "name": "rulecraft-builder-development",
+  "private": true,
+  "description": "Maintainer tooling; consuming Laravel apps use the bundled assets.",
+  "scripts": {
+    "test:browser": "node tests/browser/builder.spec.cjs",
+    "build:bootstrap": "node tools/build-bootstrap.cjs",
+    "format:check": "prettier --check resources/builder/builder.js resources/builder/builder.css tools/build-bootstrap.cjs tests/browser/builder.spec.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1",
+    "postcss": "8.5.32",
+    "postcss-prefix-selector": "2.2.1",
+    "prettier": "3.9.10"
+  }
+}
