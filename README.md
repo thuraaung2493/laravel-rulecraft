@@ -1,3 +1,12 @@
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/thuraaung2493/laravel-rulecraft/main/.github/assets/branding/logo.png"
+    alt="Laravel Rulecraft logo"
+    width="160"
+    height="160"
+  >
+</p>
+
 # Rulecraft
 
 Rulecraft is a Laravel developer tool for business rules and conditional role permissions. Store conditions in the database, combine them with AND/OR groups, and evaluate application data. Execute registered actions explicitly when a policy passes.
