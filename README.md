@@ -1,9 +1,8 @@
 <p align="center">
   <img
-    src="https://raw.githubusercontent.com/thuraaung2493/laravel-rulecraft/main/.github/assets/branding/logo.png"
-    alt="Laravel Rulecraft logo"
-    width="160"
-    height="160"
+    src="https://raw.githubusercontent.com/thuraaung2493/laravel-rulecraft/main/.github/assets/branding/social-preview.png"
+    alt="Laravel Rulecraft social preview"
+    width="100%"
   >
 </p>
 
