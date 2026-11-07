@@ -1,9 +1,5 @@
 <p align="center">
-  <img
-    src="https://raw.githubusercontent.com/thuraaung2493/laravel-rulecraft/main/.github/assets/branding/social-preview.png"
-    alt="Laravel Rulecraft social preview"
-    width="100%"
-  >
+  <img src=".github/assets/branding/logo.png" alt="Laravel Rulecraft logo" width="120" />
 </p>
 
 # Rulecraft
@@ -11,6 +7,10 @@
 Rulecraft is a Laravel developer tool for business rules and conditional role permissions. Store conditions in the database, combine them with AND/OR groups, and evaluate application data. Execute registered actions explicitly when a policy passes.
 
 It uses Symfony Expression Language and configurable table names. The source targets PHP 7.3 compatibility and Laravel 7–13 on compatible runtimes. The development version is `dev-main`, tracked by the `main` branch.
+
+![Laravel Rulecraft — an open-source project by Thura Aung](.github/assets/branding/social-preview.jpg)
+
+An open-source project by [Thura Aung](https://thuraaung2493.github.io/).
 
 ## Features
 
