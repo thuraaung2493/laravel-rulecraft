@@ -6,7 +6,7 @@
 
 Rulecraft is a Laravel developer tool for business rules and conditional role permissions. Store conditions in the database, combine them with AND/OR groups, and evaluate application data. Execute registered actions explicitly when a policy passes.
 
-It uses Symfony Expression Language and configurable table names. The source targets PHP 7.3 compatibility and Laravel 7–13 on compatible runtimes. The development version is `dev-main`, tracked by the `main` branch.
+It uses Symfony Expression Language and configurable table names. The source targets PHP 7.3 compatibility and Laravel 7–13 on compatible runtimes. The first beta is `v0.1.0-beta.1`; the development version is `dev-main`, tracked by the `main` branch.
 
 ![Laravel Rulecraft — an open-source project by Thura Aung](.github/assets/branding/social-preview.jpg)
 
@@ -50,10 +50,10 @@ The sections below introduce the core workflow in one place. Create policy recor
 
 ### Install and migrate
 
-Once the package is registered on Packagist, install the development version:
+Install the beta from Packagist:
 
 ```bash
-composer require thuraaung2493/laravel-rulecraft:dev-main
+composer require thuraaung2493/laravel-rulecraft:0.1.0-beta.1
 php artisan vendor:publish --tag=rulecraft-config
 ```
 

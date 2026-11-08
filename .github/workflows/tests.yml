@@ -128,7 +128,9 @@ jobs:
   packagist:
     name: Publish to Packagist
     needs: [test, quality, builder-browser]
-    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    if: >-
+      github.event_name != 'pull_request' &&
+      (github.ref == 'refs/heads/main' || startsWith(github.ref, 'refs/tags/v'))
     runs-on: ubuntu-latest
     permissions: {}
     env:
@@ -136,6 +138,7 @@ jobs:
       PACKAGIST_TOKEN: ${{ secrets.PACKAGIST_TOKEN }}
       REPOSITORY_URL: ${{ github.server_url }}/${{ github.repository }}
       REGISTER_PACKAGE: ${{ inputs.register_package || false }}
+      PACKAGE_VERSION: ${{ github.ref_type == 'tag' && github.ref_name || 'dev-main' }}
     steps:
       - name: Check Packagist configuration
         id: configuration
@@ -187,4 +190,4 @@ jobs:
           message = "Package registered on Packagist." if register else "Packagist update accepted."
           print(message)
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
-              summary.write(message + " Version: dev-main.\n")
+              summary.write(message + " Version: " + os.environ["PACKAGE_VERSION"] + ".\n")
